@@ -10,7 +10,7 @@
   </div>
   <div class="container-curriculo">
     <div id="printCurriculo" class="curriculo">
-      <div class="body">
+      <div class="body" *ngIf="data as d">
         <div class="heading">
           <h2>Curriculo</h2>
           <span class="heading-border" data-anime="rigth"></span>
@@ -18,12 +18,9 @@
         <div data-anime="up">
           <h3>
             <i class="fa-brands fa-dev"></i>
-            Objetivo Profissional
+            {{ d.objetivo.titulo }}
           </h3>
-          <h4>
-            Desenvolvedor Sênior com Expertise em Tecnologias de Backend e
-            Frontend, infratrutura e integraçõs/automações com N8N
-          </h4>
+          <h4>{{ d.objetivo.descricao }}</h4>
         </div>
         <div>
           <h3>
@@ -31,15 +28,15 @@
             Educação
           </h3>
           <ul>
-            <li data-anime="up">
+            <li data-anime="up" *ngFor="let edu of d.educacao">
               <span class="titulo">Instituição:</span>
-              <span> Faculdade de Tecnologia e Ciências - FTC</span><br />
+              <span> {{ edu.instituicao }}</span><br />
               <span class="titulo">Curso:</span>
-              <span> Bacharel e Sistemas de Informação </span><br />
+              <span> {{ edu.curso }} </span><br />
               <span class="titulo">Local:</span>
-              <span> Salvador, Bahia</span><br />
+              <span> {{ edu.local }}</span><br />
               <span class="titulo">Período:</span>
-              <Span> 2010 a 2017</Span>
+              <Span> {{ edu.periodo }}</Span>
             </li>
           </ul>
         </div>
@@ -49,226 +46,24 @@
             Experiência Profissional
           </h3>
           <ul>
-            <li data-anime="up">
+            <li data-anime="up" *ngFor="let exp of d.experiencias">
               <span class="titulo">Instituição:</span>
               <span>
-                <a
-                  href="https://www.automind.com.br/"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  Automind
+                <a *ngIf="exp.link" [href]="exp.link" target="_blank" class="fw-lighter text-decoration-none link-dark" rel="noopener">
+                  {{ exp.instituicao }}
                 </a>
-                <br
-              /></span>
-              <span class="titulo">Cargo:</span>
-              <span> Desenvolvedor Sênior</span><br />
-              <span class="titulo">Local:</span>
-              <span> Híbrido </span> <br />
-              <span class="titulo">Período:</span>
-              <span> 2024 - Atual</span><br />
-              <span class="titulo">Descrição:</span>
-              <span>
-                Análise e Desenvolvimento/Manutenção<b> Backend:</b> C# .NET
-                Core e Framework, EntityFramework e <b> Frontend:</b> BootStrap,
-                MVC, Javascript, Vue, Json, Html.
-                <b> Outras Tecnologias:</b> SqlServer/PLSQL, triggers,
-                procedures, Scrum, DevOps.
+                <span *ngIf="!exp.link">{{ exp.instituicao }}</span>
+                <br />
               </span>
-            </li>
-            <li data-anime="up">
-              <span class="titulo">Instituição:</span>
-              <span>
-                <a
-                  href="https://plataformagenius.in/"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  Genius In
-                </a>
-                <br
-              /></span>
               <span class="titulo">Cargo:</span>
-              <span> Freelance</span><br />
+              <span> {{ exp.cargo }}</span><br />
               <span class="titulo">Local:</span>
-              <span> Home Office </span> <br />
+              <span> {{ exp.local }} </span> <br />
               <span class="titulo">Período:</span>
-              <span> 2022 a 2023</span><br />
+              <span> {{ exp.periodo }}</span><br />
               <span class="titulo">Descrição:</span>
               <span>
-                Desenvolvimento de Aplicação de pontuação, com as seguintes
-                tecnologias: AngularJs,BitBuket, TeamWork, Css, BootStrap, AWS,
-                Figma, .net Core 5.0, Sql Server
-              </span>
-            </li>
-            <li data-anime="up">
-              <span class="titulo">Instituição:</span>
-              <span>
-                <a
-                  href="https://www.supero.com.br/"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  Supero Consultoria
-                </a>
-                <br
-              /></span>
-              <span class="titulo">Cargo:</span>
-              <span> Desenvolvedor Sênior</span><br />
-              <span class="titulo">Local:</span>
-              <span> Home Office </span> <br />
-              <span class="titulo">Período:</span>
-              <span> 2022 a 2023</span><br />
-              <span class="titulo">Descrição:</span>
-              <span>
-                Análise e Desenvolvimento/Manutenção de sistemas sustentação de
-                legados e novos produtos. <b> Backend:</b> C# .NET Core e
-                Framework, Entity Framework e <b> Frontend:</b> Angular +2,
-                BootStrap, MVC, Javascript, Json, Html.
-                <b> Outras Tecnologias:</b> SqlServer e Oracle/PLSql, RabbitMQ,
-                Scrum, DevOps uso e implantação de Pipeline para automatização
-                de Depploy.
-              </span>
-            </li>
-            <li data-anime="up">
-              <span class="titulo">Instituição:</span>
-              <span>
-                <a
-                  href="https://asteba.com/"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  ACB Processamento
-                </a>
-                <br
-              /></span>
-              <span class="titulo">Cargo:</span>
-              <span> Custom Solutions Consultant III</span><br />
-              <span class="titulo">Local:</span>
-              <span> Salvador, Bahia</span><br />
-              <span class="titulo">Período:</span>
-              <span> 2021 a 2022</span><br />
-              <span class="titulo">Descrição:</span>
-              <span>
-                Análise e Desenvolvimento/Manutenção de sistemas legado e novos
-                produtos. <b> Backend:</b> C# .NET Core e Framework, Entity
-                Framework e <b> Frontend:</b> Angular +2, BootStrap, MVC,
-                Javascript, Json, Html. <b> Banco de Dados:</b> SqlServer e
-                Mongodb e CSS
-              </span>
-            </li>
-            <li data-anime="up">
-              <span class="titulo">Instituição:</span>
-              <span>
-                <a
-                  href="https://www.capgemini.com/"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  Capgemini Brazil
-                </a>
-                <br
-              /></span>
-              <span class="titulo">Cargo:</span>
-              <span> Custom Solutions Consultant III</span><br />
-              <span class="titulo">Local:</span>
-              <span> Salvador, Bahia</span><br />
-              <span class="titulo">Período:</span>
-              <span> 2021 a 2021</span><br />
-              <span class="titulo">Descrição:</span>
-              <span>
-                Análise e Desenvolvimento de API Rest Full Ferramentas com C#
-                .NET e React.Js, Swagger, Automap, Sql Server 2014, Entity
-                Framework e Core 3.1. Sistema Bancário
-              </span>
-            </li>
-            <li data-anime="up">
-              <span class="titulo">Instituição:</span>
-              <span>
-                <a
-                  href="https://www.ciberian.com.br/"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  Ciberian Tecnology
-                </a>
-                <br
-              /></span>
-              <span class="titulo">Cargo:</span>
-              <span> Desenvolvedor Pleno</span><br />
-              <span class="titulo">Local:</span>
-              <span> Salvador, Bahia</span><br />
-              <span class="titulo">Período:</span>
-              <span> 2020 a 2021</span><br />
-              <span class="titulo">Descrição:</span>
-              <span>
-                Atuando com sustentação alocado na Secretaria da Fazendo do
-                Estado da Bahia - SEFAZ. Melhorias corretivas e evolutivas das
-                aplicações. Responsável pelo acompanhamento e análises
-                relacionadas ao novo portal da SEFAZ Estado. Code Review com
-                correções e melhores práticas de desenvolvimento. Ferramentas:
-                Sonar e SharePoint.
-              </span>
-            </li>
-            <li data-anime="up">
-              <span class="titulo">Instituição:</span>
-              <span>
-                <a
-                  href="https://www.capgemini.com/"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  Capgemini Brazil
-                </a>
-                <br
-              /></span>
-              <span class="titulo">Cargo:</span>
-              <span> Desenvolvedor Pleno - Back End</span><br />
-              <span class="titulo">Local:</span>
-              <span> Salvador, Bahia</span><br />
-              <span class="titulo">Período:</span>
-              <span> 2019 a 2020</span><br />
-              <span class="titulo">Descrição:</span>
-              <span>
-                Desenvolvimento com Linguagem C # .NET com DDD, SOLID, SQRS
-                Angular,Swagger, Automap, Sql Server 2014, Entity Framework e
-                Core 3.1. Desenvolvimento de API's para criação de novos meios
-                de pagamento para seguradora com suporte e melhorias no sistema
-                legado e cosumo de json através de webhook com a gateway de
-                pagamento Vindi;
-              </span>
-            </li>
-            <li data-anime="up">
-              <span class="titulo">Instituição:</span>
-              <span>
-                <a
-                  href="https://www.lpgsolucoes.com.br"
-                  target="_blank"
-                  class="fw-lighter text-decoration-none link-dark"
-                  rel="noopener"
-                >
-                  LPG Soluçções
-                </a></span
-              ><br />
-              <span class="titulo">Cargo:</span>
-              <span> Desenvolvedor Junior/Pleno</span><br />
-              <span class="titulo">Local:</span>
-              <span> Salvador, Bahia</span><br />
-              <span class="titulo">Período:</span>
-              <span> 2017 a 2019</span><br />
-              <span class="titulo">Descrição:</span>
-              <span>
-                Análise de Sistemas – Desenvolvimentos de Sistemas/Sustentação
-                com ênfase em levantamento de requisitos entendimento do
-                problema do cliente. Windows Form e WebForm. Hibernate. CSS,
-                Javascript, SQL Server, BootStrap.
+                {{ exp.descricao }}
               </span>
             </li>
           </ul>

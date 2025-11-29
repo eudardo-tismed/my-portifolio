@@ -10,8 +10,17 @@ const animeScroll = () => {
   });
 };
 
-animeScroll();
+// Executa após o carregamento inicial e sempre que ocorrer rolagem
+window.addEventListener("scroll", animeScroll);
+window.addEventListener("DOMContentLoaded", animeScroll);
+window.addEventListener("load", animeScroll);
 
-window.addEventListener("scroll", () => {
-  animeScroll();
-});
+// Observa mudanças no DOM (Angular injeta conteúdo após bootstrap)
+try {
+  const observer = new MutationObserver(() => animeScroll());
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  // Para evitar custo contínuo, interrompe após primeira aplicação bem-sucedida
+  setTimeout(() => observer.disconnect(), 3000);
+} catch (e) {
+  // Silencia em ambientes sem suporte
+}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,7 @@ import { ContatoComponent } from './components/contato/contato.component';
     PoliticaComponent,
     ContatoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
